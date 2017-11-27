@@ -1,4 +1,4 @@
-# yue-show
+# yue-mall
 
 > A Vue.js project
 
