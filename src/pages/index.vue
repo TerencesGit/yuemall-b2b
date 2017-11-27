@@ -72,9 +72,42 @@
 							</li>
 						</ul>
 					</div>
+					<div class="native-show">
+						<ul class="show-list clearfix">
+							<li class="show-item" v-for="item in nativeShow" :index="item.id">
+								<router-link to="/">
+									<img :src="item.imgUrl" class="responsive-img">
+									<!-- <i class="icon iocn-tag native"></i> -->
+									<p class="item-name">
+										{{item.name}} 
+										<span class="uppercase">{{item.englishName}}</span>
+									</p>
+								</router-link>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="oversea-section">
+					<div class="title has-line">
+						<h2>国外作品</h2>
+						<h4 class="uppercase">GLOBAL TRAVEL DESTINATIONS</h4>
+						<div class="line"></div>
+					</div>
+					<div class="des-rows">
+						<ul class="des-row">
+							<li v-for="des in overseaDesRow1" :index="des.id">
+								<router-link :to="des.url">{{des.name}}</router-link>
+							</li>
+						</ul>
+						<ul class="des-row">
+							<li v-for="des in overseaDesRow2" :index="des.id">
+								<router-link :to="des.url">{{des.name}}</router-link>
+							</li>
+						</ul>
+					</div>
 					<div class="recommend-list">
 						<ul class="show-list clearfix">
-							<li class="show-item" v-for="item in nativeList" :index="item.id">
+							<li class="show-item" v-for="item in overseaShow" :index="item.id">
 								<router-link to="/">
 									<img :src="item.imgUrl" class="responsive-img">
 									<!-- <i class="icon iocn-tag native"></i> -->
@@ -99,103 +132,6 @@
 				loading: false,
 				bannerList: [],
 				destinations: [],
-				// recommendList: [
-				// 	{ id: '20171115001', name: '阿联酋迪拜旅拍婚纱摄影4天3晚套系', imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/01/415095049872238.jpg',},
-				// 	{ id: '20171115002', name: '阿联酋迪拜旅拍婚纱照一天套系', imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/01/415095301943684.jpg',},
-				// 	{ id: '20171115003', name: '阿联酋迪拜3天2晚旅拍婚纱摄影套系', imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/06/415099541207583.jpg',},
-				// 	{ id: '20171115004', name: '阿联酋迪拜3天2晚旅拍婚纱摄影套系', imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/06/415099541207583.jpg',},
-				// 	{ id: '20171115005', name: '阿联酋迪拜旅拍婚纱摄影4天3晚套系', imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/01/415095049872238.jpg',},
-				// 	{ id: '20171115006', name: '阿联酋迪拜旅拍婚纱照一天套系', imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/01/415095301943684.jpg',},
-				// 	{ id: '20171115001', name: '阿联酋迪拜旅拍婚纱摄影4天3晚套系', imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/01/415095049872238.jpg',},
-				// 	{ id: '20171115007', name: '阿联酋迪拜3天2晚旅拍婚纱摄影套系', imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/06/415099541207583.jpg',},
-				// 	{ id: '20171115002', name: '阿联酋迪拜旅拍婚纱照一天套系', imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/01/415095301943684.jpg',},
-				// ],
-				tabActive: 1,
-				imgSlideNum: 0,
-				products: {
-					photo: [
-						{
-							id: 20171116201,
-							name: '阿联酋迪拜3天2晚旅拍婚纱摄影套系',
-							imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/06/415099541207583.jpg',
-						},
-						{
-							id: 20171116202,
-							name: '上海旅拍婚纱摄影1天套系',
-							imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/07/415100215997889.jpg',
-						},
-						{
-							id: 20171116102,
-							name: '马尔代夫玛娜法鲁岛旅拍婚纱照6天4晚',
-							imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/04/415097792405875.jpg'
-						},
-					],
-					global: [
-						{
-							id: 20171116101,
-							name: '阿联酋迪拜旅拍婚纱摄影4天3晚套系',
-							url: '',
-							imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/01/415095049872238.jpg'
-						},
-						{
-							id: 20171116102,
-							name: '马尔代夫玛娜法鲁岛旅拍婚纱照6天4晚',
-							imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/04/415097792405875.jpg'
-						},
-						{
-							id: 20171116103,
-							name: '马尔代夫曼德芙仕岛旅拍婚纱照6天4晚套系',
-							imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/04/415097797422734.jpg'
-						},
-						{
-							id: 20171116104,
-							name: '圣托里尼旅拍婚纱摄影9天7晚套系',
-							imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/04/415097832020875.jpg'
-						},
-						{
-							id: 20171116105,
-							name: '马尔代夫阿雅达岛旅拍婚纱照6天4晚',
-							imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/04/415097805508655.jpg'
-						},
-						{
-							id: 20171116106,
-							name: '苏梅岛旅拍婚纱摄影6天4晚套系',
-							imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/04/415097847306484.jpg'
-						},
-						{
-							id: 20171116107,
-							name: '法国巴黎旅拍婚纱摄影8天6晚套系',
-							imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/04/415097857190947.jpg'
-						},
-						{
-							id: 20171116108,
-							name: '捷克布拉格旅拍婚纱摄影7天5晚套系',
-							imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/04/415097868660247.jpg'
-						},
-						{
-							id: 20171116109,
-							name: '马尔代夫神仙珊瑚岛旅拍婚纱照6天4晚',
-							imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/04/415097773489411.jpg'
-						},  
-					],
-					travel: [
-						{
-							id: 20171116301,
-							name: '新西兰皇后镇旅拍婚纱照一天套系',
-							imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/01/415095236434522.jpg',
-						},
-						{
-							id: 20171116302,
-							name: '法国普罗旺斯旅拍婚纱照一天套系',
-							imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/01/415095270295456.jpg',
-						},
-						{
-							id: 20171116301,
-							name: '马尔代夫阿雅达岛旅拍婚纱照一天套系',
-							imgUrl: 'http://fileServer.yueshijue.com/fileService/uploads/2017/11/02/415095965326664.jpg',
-						}
-					],
-				},
 			}
 		},
 		methods: {
@@ -222,45 +158,6 @@
 					console.log(this.destinations)
 				})
 			},
-			imageSlide(val) {
-				this.imgSlideNum += val;
-				if(this.imgSlideNum <= 0) {
-					this.imgSlideNum = 0
-				} else if(this.imgSlideNum >= (this.recomendSlideNum - 1)) {
-					this.imgSlideNum = this.recomendSlideNum - 1
-				}
-				this.$refs.recommend.style.left = -(this.imgSlideNum * 100)+ '%';
-			},
-			changeTabActive(val) {
-				this.tabActive = val;
-			},
-			// handlePlay () {
-			// 	this.videoPlayed = true;
-			// },
-			// handlePause () {
-			// 	this.videoPlayed = false;
-			// },
-			// handlePlayed() {
-			// 	let yueVideo = this.$refs.yueVideo;
-			// 	if(!(yueVideo && yueVideo.readyState)) {
-			// 		this.$message('该视频暂无法播放')
-			// 		return;
-			// 	}
-			// 	yueVideo.paused ? yueVideo.play() : yueVideo.pause()
-			// },
-			// videoSwitch(video) {
-			// 	this.currMv = video;
-			// 	let yueVideo = this.$refs.yueVideo;
-			// 	let videoTop = document.querySelector('.mv-section').offsetTop;
-			// 	yueVideo.load();
-			// 	yueVideo.play();
-			// 	window.scrollTo(0, videoTop);
-			// },
-			autoImgSlide() {
-				this.imgSlideNum += 1;
-				this.imgSlideNum = this.imgSlideNum >= this.recomendSlideNum ? 0 : this.imgSlideNum
-				document.querySelector('.recommend-list').style.left = -(this.imgSlideNum * 100)+ '%';
-			}
 		},
 		computed: {
 			desRow1() {
@@ -273,13 +170,16 @@
 				return this.destinations.filter((des, index) => index >= 19 && index < 27 )
 			},
 			nativeList(){
-				return this.destinations.filter(des => des.region === 'native' && des.imgUrl)
+				return this.destinations.filter(des => des.region === 'native')
 			},
 			nativeDesRow1(){
-				return this.nativeList.filter((des, index) => index >= 0 && index < 6 )
+				return this.nativeList.filter((des, index) => index >= 0 && index < 7 )
 			},
 			nativeDesRow2(){
-				return this.nativeList.filter((des, index) => index >= 6 && index < 11 )
+				return this.nativeList.filter((des, index) => index >= 7 && index < 11 )
+			},
+			nativeShow(){
+				return this.nativeList.filter(des => des.imgUrl)
 			},
 			recommendList() {
 				return this.destinations.filter(des => des.recommend === true)
@@ -287,8 +187,14 @@
 			overseaList(){
 				return this.destinations.filter(des => des.region === 'oversea')
 			},
-			recomendSlideNum() {
-				return Math.ceil(this.recommendList.length / 3);
+			overseaDesRow1(){
+				return this.overseaList.filter((des, index) => index >= 0 && index < 9 )
+			},
+			overseaDesRow2(){
+				return this.overseaList.filter((des, index) => index >= 9 && index < 15 )
+			},
+			overseaShow() {
+				return this.overseaList.filter((des, index) => des.imgUrl)
 			}
 		},
 		mounted() {
@@ -429,104 +335,6 @@
 			}
 		}
 	}
-	// .product {
-	// 	margin: 50px 0;
-	// 	.recommend-list {
-	// 		position: relative;
-	// 		.more {
-	// 			margin: 12px 0;
-	// 			text-align: right;
-	// 			a {
-	// 				color: #e50110;
-	// 			}
-	// 		}
-	// 		.switch-button {
-	// 			position: absolute;
-	// 			top: 40%;
-	// 			left: 0;
-	// 			width: 100%;
-	// 			height: 1px;
-	// 			.icon {
-	// 				position: absolute;
-	// 				top: 40%;
-	// 		    width: 32px;
-	// 		    height: 57px;
-	// 		    cursor: pointer;
-	// 				&.prev {
-	// 					left: -50px;
-	// 					background-position: -138px -59px;
-	// 				}
-	// 				&.next {
-	// 					right: -50px;
-	// 					background-position: -106px -59px;
-	// 				}
-	// 			}
-	// 		}
-	// 		.recommend-wrap {
-	// 			position: relative;
-	// 			overflow: hidden;
-	// 			width: 100%;
-	// 			height: 221px;
-	// 		}
-	// 		.recommend-list {
-	// 			position: absolute;
-	// 			top: 0;
-	// 			left: 0;
-	// 			height: 221px;
-	// 			transition: all .8s;
-	// 			li {
-	// 				float: left;
-	// 				width: 394px;
-	// 				margin-right: 9px;
-	// 				overflow: hidden;
-	// 				cursor: pointer;
-	// 				position: relative;
-	// 				&:nth-child(3n) {
-	// 					margin-right: 0;
-	// 				}
-	// 				&:hover {
-	// 					.item-name {
-	// 						bottom: 0;
-	// 						background: #e50110;
-	// 					}
-	// 				}
-	// 				img {
-	// 					display: block;
-	// 					width: 100%;
-	// 					height: auto;
-	// 				}
-	// 				.item-name {
-	// 					position: absolute;
-	// 					bottom: -45px;
-	// 					width: 100%;
-	// 					padding: 10px 12px;
-	// 					text-align: center;
-	// 					font-size: 16px;
-	// 					color: #fff;
-	// 					background: transparent;
-	// 					transition: all .3s;
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// }
-	// .product-show {
-	// 	margin: 50px 0;
-	// 	.product-tab {
-	// 		display: flex;
-	// 		.tab {
-	// 			flex: 1;
-	// 			cursor: pointer;
-	// 			background: #434343;
-	// 			&.active {
-	// 				background: #c60c1a;
-	// 				.line {
-	// 					background: #fff;
-	// 				}
-	// 			}
-	// 		} 
-	// 	}
-	// }
 	.show-list {
 		margin: 30px 0;
 		.show-item {
