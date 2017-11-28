@@ -1,7 +1,7 @@
 import Container from '@/components/Container'
-import Index from '@/pages/index'
-
 import ShowContainer from '@/components/ShowContainer'
+
+import Show from '@/pages/show'
 import Bali from '@/pages/show/Bali'
 import Rome from '@/pages/show/Rome'
 import Maldives from '@/pages/show/Maldives'
@@ -10,14 +10,14 @@ import Saipan from '@/pages/show/Saipan'
 const routes = [
 	{
 	  path: '/',
-	  redirect: '/index'
+	  redirect: '/show'
 	},
 	{
 	  path: '/',
 	  name: '悦视觉',
 	  component: Container,
 	  children: [
-	  	{ path: 'index', name: '首页', component: Index,}
+	  	{ path: 'show', name: '首页', component: Show,}
 	  ]
 	},
 	{
