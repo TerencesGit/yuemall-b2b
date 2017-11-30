@@ -155,7 +155,6 @@
 					this.destinations.sort(() => {
       			return 0.5 - Math.random()
       		})
-					console.log(this.destinations)
 				})
 			},
 		},
