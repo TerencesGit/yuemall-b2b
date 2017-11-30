@@ -23,7 +23,7 @@ const routes = [
 	{
 		path: '/show',
 		name: '详情页',
-		component: ShowContainer,
+		component: Container,
 	  children: [
 	  	{ path: 'Rome', name: '罗马', component: Rome, },
 	  	{ path: 'Bali', name: '巴厘岛', component: Bali, },

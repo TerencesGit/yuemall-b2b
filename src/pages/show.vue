@@ -235,7 +235,7 @@
 			width: 50px;
 			height: 2px;
 			margin: 8px auto;
-			background: #c60c1a;
+			background: #00AAEF;
 		}
 		&.has-line {
 			h2, h4 {
@@ -329,8 +329,8 @@
 				font-weight: normal;
 				border: 1px solid #ccc;
 				&:hover {
-					background: #e50110;
-					border: 1px solid #e50110;
+					background: #00AAEF;
+					border: 1px solid #00AAEF;
 				}
 			}
 		}
@@ -351,7 +351,7 @@
 				box-shadow: 0 15px 30px rgba(255,255,255,.1);
 				transform: translate3d(0, -2px, 0);
 				.item-name {
-					background: #c60c1a;
+					background: #00AAEF;
 				}
 			}
 			img {
