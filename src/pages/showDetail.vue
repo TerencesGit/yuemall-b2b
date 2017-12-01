@@ -21,7 +21,7 @@
 				bgColor: '',
 				backgroundColor: {
 					Bali: '#235E80',
-					Chejudo: '#Chejudo',
+					Chejudo: '#088ADE',
 					Kyoto: '#983037',
 					Maldives: '#3496EF',
 					Nara: '#EB6075',
@@ -29,7 +29,7 @@
 					Queenstown: '#014EA8',
 					Rome: '#6B4F4B',
 					Sydney: '#1F2C18',
-					Saipan: '#EB6075',
+					Saipan: '#056CAE',
 					Santorini: '#34A0E1',
 				}
 			}
@@ -37,7 +37,7 @@
 		methods: {
 			getShowList(des) {
 				getImageList({city: des}).then(res => {
-					console.log(res)
+					// console.log(res)
 					if(res.data.code === '0001') {
 						this.imageList = res.data.result.imageList;
 						this.headerImg = this.imageList[0];
@@ -58,7 +58,6 @@
 			} else {
 				this.$router.push('/')
 			}
-			console.log(this.$route.query.destination)
 		}
 	}
 </script>
@@ -77,12 +76,6 @@
 	    top: -90px;
 	    z-index: 2;
 	    width: auto;
-	    // .show-item {
-	    //   margin-bottom: 10px;
-	    //   &:last-child {
-	    //     margin-bottom: 0;
-	    //   }
-	    // }
 	    img {
 	      display: block;
 	      width: 100%;
