@@ -10,11 +10,6 @@ const retObj = {
 	message: '操作成功',
 	result: {}
 }
-const retExpireObj = {
-	code: '0000',
-	message: '尚未登录或当前会话已过期',
-	result: {}
-}
 export default {
 	bootstrap() {
 		let mock = new MockAdapter(axios)
@@ -65,22 +60,25 @@ export default {
 			})
 		})
 		// 获取用户信息
-		mock.onGet('/accountInter/getMyInfo.do').reply(config => {
+		mock.onGet('/showInter/getMyInfo.do').reply(config => {
 			let userId = Utils.getCookie('userId');
+			let retObj = {
+				code: '0001',
+				message: '操作成功',
+				result: {}
+			}
 			if(!userId) {
 				return new Promise((resolve, reject) => {
+					retObj.code = '0002';
+					retObj.message = '尚未登录或Session已过期';
 					setTimeout(() => {
-						resolve([200, retExpireObj])
+						resolve([200, retObj])
 					}, 500)
 				})
 			}
 			let _userInfo = _UserList.filter(user => user.userId == userId)[0]
-			let retObj = {
-				code: '0001',
-				message: '操作成功',
-				result: {
-					userInfo: _userInfo
-				}
+			retObj.result = {
+				userInfo: _userInfo
 			}
 			return new Promise((resolve, reject) => {
 				setTimeout(() => {
@@ -199,18 +197,18 @@ export default {
 			})
 		})
 		// 客片图片列表
-		mock.onGet('/showInter/getShowImgList.do').reply(config => {
-			let { des } = config.params;
-			console.log(des)
+		mock.onGet('/showInter/getImageList.do').reply(config => {
+			let { city } = config.params;
+			console.log(city)
 			let retObj = {
 				code: '0001',
 				message: '操作成功',
 				result: {},
 			}
 			console.log(ShowImgList)
-			if(des && ShowImgList[des]) {
+			if(city && ShowImgList[city]) {
 				retObj.result = {
-					imageList: ShowImgList[des]
+					imageList: ShowImgList[city]
 				}
 			} else {
 				retObj.code = '0002',

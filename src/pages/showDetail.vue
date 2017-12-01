@@ -3,7 +3,7 @@
 		<header class="show-header">
 			<img :src="headerImg" alt="">
 		</header>
-		<main class="show-main" style="background: #235E80;">
+		<main class="show-main" v-bind:style="{background: bgColor}">
 			<div class="container">
 				<img v-for="item in imageList" :index="item" :src="item">
 			</div>
@@ -11,18 +11,32 @@
 	</section>
 </template>
 <script>
-	import { getShowImgList } from '@/api'
+	import { getImageList } from '@/api'
 	export default {
 		data() {
 			return {
 				destination: '',
 				imageList: [],
 				headerImg: '',
+				bgColor: '',
+				backgroundColor: {
+					Bali: '#235E80',
+					Chejudo: '#Chejudo',
+					Kyoto: '#983037',
+					Maldives: '#3496EF',
+					Nara: '#EB6075',
+					Paris: '#292637',
+					Queenstown: '#014EA8',
+					Rome: '#6B4F4B',
+					Sydney: '#1F2C18',
+					Saipan: '#EB6075',
+					Santorini: '#34A0E1',
+				}
 			}
 		},
 		methods: {
 			getShowList(des) {
-				getShowImgList({des: des}).then(res => {
+				getImageList({city: des}).then(res => {
 					console.log(res)
 					if(res.data.code === '0001') {
 						this.imageList = res.data.result.imageList;
@@ -39,6 +53,7 @@
 		mounted() {
 			if(this.$route.query.destination) {
 				this.destination = this.$route.query.destination;
+				this.bgColor = this.backgroundColor[this.destination];
 				this.getShowList(this.destination)
 			} else {
 				this.$router.push('/')

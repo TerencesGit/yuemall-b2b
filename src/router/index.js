@@ -1,6 +1,7 @@
 import Container from '@/components/Container'
 import ShowContainer from '@/components/ShowContainer'
 
+import Login from '@/pages/login'
 import ShowIndex from '@/pages/show'
 import ShowDetail from '@/pages/showDetail'
 
@@ -8,6 +9,11 @@ const routes = [
 	{
 	  path: '/',
 	  redirect: '/show'
+	},
+	{
+	  path: '/login',
+	  name: '登录页',
+	  component: Login,
 	},
 	{
 	  path: '/',
