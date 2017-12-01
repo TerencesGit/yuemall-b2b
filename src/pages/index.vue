@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<div class="banner" v-loading="loading">
-			<el-carousel indicator-position height="880px">
+			<el-carousel indicator-position height="600px">
 		    <el-carousel-item v-for="(item, index) in bannerList" :key="index">
 		      <router-link to="/">
 		      	<img :src="item.imgUrl" :alt="item.wareName">

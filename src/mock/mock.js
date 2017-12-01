@@ -2,8 +2,8 @@ import axios from 'axios'
 import Utils from '@/assets/js/utils'
 import MockAdapter from 'axios-mock-adapter'
 import { UserList, MenuList, BannerList, Destinations, HotImgList, HotSmallImgList,
-	NationwideLargeImgList, NationwideImgList, OverseasList,
-	SamplesImgList, WareList, RecommendList, WareImgList, } from './data/data'
+	NationwideLargeImgList, NationwideImgList, OverseasList, SamplesImgList, WareList, 
+	RecommendList, WareImgList, Banners, ShowImgList } from './data/data'
 let _UserList = UserList;
 const retObj = {
 	code: '0001',
@@ -109,7 +109,7 @@ export default {
 				code: '0001',
 				message: '操作成功',
 				result: {
-					bannerList: BannerList
+					bannerList: Banners
 				}
 			}
 			return new Promise((resolve, reject) => {
@@ -191,6 +191,30 @@ export default {
 				result: {
 					wareImgList: WareImgList
 				}
+			}
+			return new Promise((resolve, reject) => {
+				setTimeout(() => {
+					resolve([200, retObj])
+				}, 0)
+			})
+		})
+		// 客片图片列表
+		mock.onGet('/showInter/getShowImgList.do').reply(config => {
+			let { des } = config.params;
+			console.log(des)
+			let retObj = {
+				code: '0001',
+				message: '操作成功',
+				result: {},
+			}
+			console.log(ShowImgList)
+			if(des && ShowImgList[des]) {
+				retObj.result = {
+					imageList: ShowImgList[des]
+				}
+			} else {
+				retObj.code = '0002',
+				retObj.message = '请求有误，请重试'
 			}
 			return new Promise((resolve, reject) => {
 				setTimeout(() => {

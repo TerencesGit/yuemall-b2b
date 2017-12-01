@@ -62,12 +62,12 @@
 	    top: -90px;
 	    z-index: 2;
 	    width: auto;
-	    .show-item {
-	      margin-bottom: 10px;
-	      &:last-child {
-	        margin-bottom: 0;
-	      }
-	    }
+	    // .show-item {
+	    //   margin-bottom: 10px;
+	    //   &:last-child {
+	    //     margin-bottom: 0;
+	    //   }
+	    // }
 	    img {
 	      display: block;
 	      width: 100%;

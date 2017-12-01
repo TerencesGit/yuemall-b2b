@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<div class="banner" v-loading="loading">
-			<el-carousel indicator-position height="880px">
+			<el-carousel indicator-position height="600px">
 		    <el-carousel-item v-for="(item, index) in bannerList" :key="index">
 		      <router-link to="/">
 		      	<img :src="item.imgUrl" :alt="item.wareName">
@@ -20,17 +20,17 @@
 					<div class="des-rows">
 						<ul class="des-row">
 							<li v-for="des in desRow1" :index="des.id">
-								<router-link :to="des.url" target="_blank">{{des.name}}</router-link>
+								<router-link :to='"show/detail?destination="+des.url' target="_blank">{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
 							<li v-for="des in desRow2" :index="des.id">
-								<router-link :to="des.url" target="_blank">{{des.name}}</router-link>
+								<router-link :to='"show/detail?destination="+des.url' target="_blank">{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
 							<li v-for="des in desRow3" :index="des.id">
-								<router-link :to="des.url" target="_blank">{{des.name}}</router-link>
+								<router-link :to='"show/detail?destination="+des.url' target="_blank">{{des.name}}</router-link>
 							</li>
 						</ul>
 					</div>
@@ -42,7 +42,7 @@
 					<div class="recommend-list">
 						<ul class="show-list clearfix">
 							<li class="show-item" v-for="item in recommendList" :index="item.id">
-								<router-link :to="item.url" target="_blank">
+								<router-link :to='"show/detail?destination="+item.url' target="_blank">
 									<img :src="item.imgUrl" class="responsive-img">
 									<!-- <i class="icon iocn-tag native"></i> -->
 									<p class="item-name">
@@ -63,12 +63,12 @@
 					<div class="des-rows">
 						<ul class="des-row">
 							<li v-for="des in nativeDesRow1" :index="des.id">
-								<router-link :to="des.url" target="_blank">{{des.name}}</router-link>
+								<router-link :to='"show/detail?destination="+des.url' target="_blank">{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
 							<li v-for="des in nativeDesRow2" :index="des.id">
-								<router-link :to="des.url" target="_blank">{{des.name}}</router-link>
+								<router-link :to='"show/detail?destination="+des.url' target="_blank">{{des.name}}</router-link>
 							</li>
 						</ul>
 					</div>
@@ -96,12 +96,12 @@
 					<div class="des-rows">
 						<ul class="des-row">
 							<li v-for="des in overseaDesRow1" :index="des.id">
-								<router-link :to="des.url" target="_blank">{{des.name}}</router-link>
+								<router-link :to='"show/detail?destination="+des.url' target="_blank">{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
 							<li v-for="des in overseaDesRow2" :index="des.id">
-								<router-link :to="des.url" target="_blank">{{des.name}}</router-link>
+								<router-link :to='"show/detail?destination="+des.url' target="_blank">{{des.name}}</router-link>
 							</li>
 						</ul>
 					</div>
@@ -110,7 +110,6 @@
 							<li class="show-item" v-for="item in overseaShow" :index="item.id">
 								<router-link :to="item.url" target="_blank">
 									<img :src="item.imgUrl" class="responsive-img">
-									<!-- <i class="icon iocn-tag native"></i> -->
 									<p class="item-name">
 										{{item.name}} 
 										<span class="uppercase">{{item.englishName}}</span>
@@ -125,7 +124,7 @@
 	</section>
 </template>
 <script>
-	import { getIndexBanner, getDestinations, getShowImgList } from '@/api'
+	import { getIndexBanner, getDestinations } from '@/api'
 	export default {
 		data() {
 			return {
