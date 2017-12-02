@@ -20,17 +20,17 @@
 					<div class="des-rows">
 						<ul class="des-row">
 							<li v-for="des in desRow1" :index="des.id">
-								<router-link :to='"show/detail?destination="+des.url' target="_blank">{{des.name}}</router-link>
+								<router-link to='/'>{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
 							<li v-for="des in desRow2" :index="des.id">
-								<router-link :to='"show/detail?destination="+des.url' target="_blank">{{des.name}}</router-link>
+								<router-link to='/'>{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
 							<li v-for="des in desRow3" :index="des.id">
-								<router-link :to='"show/detail?destination="+des.url' target="_blank">{{des.name}}</router-link>
+								<router-link to='/'>{{des.name}}</router-link>
 							</li>
 						</ul>
 					</div>
@@ -44,7 +44,6 @@
 							<li class="show-item" v-for="item in recommendList" :index="item.id">
 								<router-link :to='"show/detail?destination="+item.url' target="_blank">
 									<img :src="item.imgUrl" class="responsive-img">
-									<!-- <i class="icon iocn-tag native"></i> -->
 									<p class="item-name">
 										{{item.name}} 
 										<span class="uppercase">{{item.englishName}}</span>
@@ -63,19 +62,19 @@
 					<div class="des-rows">
 						<ul class="des-row">
 							<li v-for="des in nativeDesRow1" :index="des.id">
-								<router-link :to='"show/detail?destination="+des.url' target="_blank">{{des.name}}</router-link>
+								<router-link :to='des.url'>{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
 							<li v-for="des in nativeDesRow2" :index="des.id">
-								<router-link :to='"show/detail?destination="+des.url' target="_blank">{{des.name}}</router-link>
+								<router-link :to='des.url'>{{des.name}}</router-link>
 							</li>
 						</ul>
 					</div>
 					<div class="native-show">
 						<ul class="show-list clearfix">
 							<li class="show-item" v-for="item in nativeShow" :index="item.id">
-								<router-link :to="item.url" target="_blank">
+								<router-link :to="item.url">
 									<img :src="item.imgUrl" class="responsive-img">
 									<!-- <i class="icon iocn-tag native"></i> -->
 									<p class="item-name">
@@ -96,12 +95,12 @@
 					<div class="des-rows">
 						<ul class="des-row">
 							<li v-for="des in overseaDesRow1" :index="des.id">
-								<router-link :to='"show/detail?destination="+des.url' target="_blank">{{des.name}}</router-link>
+								<router-link to='/'>{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
 							<li v-for="des in overseaDesRow2" :index="des.id">
-								<router-link :to='"show/detail?destination="+des.url' target="_blank">{{des.name}}</router-link>
+								<router-link to='/'>{{des.name}}</router-link>
 							</li>
 						</ul>
 					</div>
@@ -171,10 +170,10 @@
 				return this.destinations.filter(des => des.region === 'native')
 			},
 			nativeDesRow1(){
-				return this.nativeList.filter((des, index) => index >= 0 && index < 7 )
+				return this.nativeList.filter((des, index) => index >= 0 && index < 6 )
 			},
 			nativeDesRow2(){
-				return this.nativeList.filter((des, index) => index >= 7 && index < 11 )
+				return this.nativeList.filter((des, index) => index >= 6 && index < 15 )
 			},
 			nativeShow(){
 				return this.nativeList.filter(des => des.imgUrl)
@@ -186,13 +185,13 @@
 				return this.destinations.filter(des => des.region === 'oversea')
 			},
 			overseaDesRow1(){
-				return this.overseaList.filter((des, index) => index >= 0 && index < 9 )
+				return this.overseaList.filter((des, index) => index >= 0 && index < 7 )
 			},
 			overseaDesRow2(){
-				return this.overseaList.filter((des, index) => index >= 9 && index < 15 )
+				return this.overseaList.filter((des, index) => index >= 7 && index < 13 )
 			},
 			overseaShow() {
-				return this.overseaList.filter((des, index) => des.imgUrl)
+				return this.overseaList.filter((des, index) => des.imgUrl && des.recommend)
 			}
 		},
 		mounted() {

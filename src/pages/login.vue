@@ -31,7 +31,7 @@
 				</el-form>
 			</div>
 			<div class="login-bg">
-				<img src="http://fileServer.yueshijue.com/fileService/uploads/2017/11/04/415097801001784.jpg" alt="login_bg">
+				<img :src="loginBg" alt="login_bg">
 			</div>
 		</div>
 		<footer class="footer">
@@ -60,7 +60,15 @@
 	        password: [
 	          { required: true, message: '请输入密码', trigger: 'blur' },
 	        ],
-				}
+				},
+				loginBg: '',
+				loginBgList: [
+					'http://fileServer.yueshijue.com/fileService/uploads/2017/11/03/415096767114331.jpg',
+					'http://fileServer.yueshijue.com/fileService/uploads/2017/11/03/415096767691832.jpg',
+					'http://fileServer.yueshijue.com/fileService/uploads/2017/11/03/415096768788863.jpg',
+					'http://fileServer.yueshijue.com/fileService/uploads/2017/11/03/415096768908394.jpg',
+					'http://fileServer.yueshijue.com/fileService/uploads/2017/11/04/415097801001784.jpg'
+				]
 			}
 		},
 		methods: {
@@ -102,6 +110,8 @@
 			}
 		},
 		mounted() {
+			let index = Math.floor(Math.random() * this.loginBgList.length);
+			this.loginBg = this.loginBgList[index];
 			document.addEventListener('keydown', this.keyEnter)
 			let user = JSON.parse(localStorage.getItem('user'))
 			if(user && user.name && user.pwd) {

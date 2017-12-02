@@ -1,11 +1,11 @@
 <template>
-	<section class="show-page">
+	<section class="show-page" v-bind:style="{background: bgColor}">
 		<header class="show-header">
 			<img :src="headerImg" alt="">
 		</header>
-		<main class="show-main" v-bind:style="{background: bgColor}">
+		<main class="show-main">
 			<div class="container">
-				<img v-for="item in imageList" :index="item" :src="item">
+				<img v-for="(item, index) in imageList" :src="item" :index="index + 1">
 			</div>
 		</main>
 	</section>
@@ -19,7 +19,7 @@
 				imageList: [],
 				headerImg: '',
 				bgColor: '',
-				backgroundColor: {
+				bgColorList: {
 					Bali: '#235E80',
 					Chejudo: '#088ADE',
 					Kyoto: '#983037',
@@ -28,9 +28,9 @@
 					Paris: '#292637',
 					Queenstown: '#014EA8',
 					Rome: '#6B4F4B',
-					Sydney: '#1F2C18',
 					Saipan: '#056CAE',
 					Santorini: '#34A0E1',
+					Sydney: '#1F2C18',
 				}
 			}
 		},
@@ -53,7 +53,7 @@
 		mounted() {
 			if(this.$route.query.destination) {
 				this.destination = this.$route.query.destination;
-				this.bgColor = this.backgroundColor[this.destination];
+				this.bgColor = this.bgColorList[this.destination];
 				this.getShowList(this.destination)
 			} else {
 				this.$router.push('/')
