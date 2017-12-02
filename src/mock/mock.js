@@ -199,13 +199,13 @@ export default {
 		// 客片图片列表
 		mock.onGet('/showInter/getImageList.do').reply(config => {
 			let { city } = config.params;
-			console.log(city)
+			// console.log(city)
 			let retObj = {
 				code: '0001',
 				message: '操作成功',
 				result: {},
 			}
-			console.log(ShowImgList)
+			// console.log(ShowImgList)
 			if(city && ShowImgList[city]) {
 				retObj.result = {
 					imageList: ShowImgList[city]

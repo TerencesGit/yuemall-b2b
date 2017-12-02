@@ -20,17 +20,17 @@
 					<div class="des-rows">
 						<ul class="des-row">
 							<li v-for="des in desRow1" :index="des.id">
-								<router-link to='/'>{{des.name}}</router-link>
+								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
 							<li v-for="des in desRow2" :index="des.id">
-								<router-link to='/'>{{des.name}}</router-link>
+								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
 							<li v-for="des in desRow3" :index="des.id">
-								<router-link to='/'>{{des.name}}</router-link>
+								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
 					</div>
@@ -95,12 +95,12 @@
 					<div class="des-rows">
 						<ul class="des-row">
 							<li v-for="des in overseaDesRow1" :index="des.id">
-								<router-link to='/'>{{des.name}}</router-link>
+								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
 							<li v-for="des in overseaDesRow2" :index="des.id">
-								<router-link to='/'>{{des.name}}</router-link>
+								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
 					</div>

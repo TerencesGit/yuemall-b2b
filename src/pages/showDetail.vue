@@ -20,6 +20,7 @@
 				headerImg: '',
 				bgColor: '',
 				bgColorList: {
+					Auckland: '#326307',
 					Bali: '#235E80',
 					Chejudo: '#088ADE',
 					Kyoto: '#983037',
