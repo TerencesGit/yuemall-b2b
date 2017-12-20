@@ -3,8 +3,8 @@
 		<div class="banner" v-loading="loading">
 			<el-carousel indicator-position height="600px">
 		    <el-carousel-item v-for="(item, index) in bannerList" :key="index">
-		      <router-link to="/">
-		      	<img :src="item.imgUrl" :alt="item.wareName">
+		      <router-link to="/" :style="{background: url('+item.imgUrl+')}">
+		      	<!-- <img :src="item.imgUrl" :alt="item.wareName"> -->
 		      </router-link>
 		    </el-carousel-item>
 		  </el-carousel>
@@ -208,6 +208,11 @@
 		width: 100%;
 		overflow: hidden;
 		.el-carousel {
+			a {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
 			img{
 				display: block;
 				width: 100%;
