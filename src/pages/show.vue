@@ -107,7 +107,7 @@
 					<div class="recommend-list">
 						<ul class="show-list clearfix">
 							<li class="show-item" v-for="item in overseaShow" :index="item.id">
-								<router-link :to="item.url" target="_blank">
+								<router-link :to='item.url !== "/" ? "show/detail?destination="+item.url : "/"' :target="item.url === '/' ? '' : '_blank'">
 									<img :src="item.imgUrl" class="responsive-img">
 									<p class="item-name">
 										{{item.name}} 

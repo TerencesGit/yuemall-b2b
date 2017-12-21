@@ -1,5 +1,5 @@
 <template>
-	<div class="link-container">
+	<div class="min-container">
 		<section class="content">
 			<h2 class="title">预存付款流程</h2>
 			<article>
@@ -59,11 +59,7 @@
 <style scoped lang="scss">
   h2 {
   	margin: 15px 0;
-  	font-weight: bold;
   }
-	h3 {
-		font-weight: bold;
-	}
 	p {
 		margin: 15px 0;
 	}

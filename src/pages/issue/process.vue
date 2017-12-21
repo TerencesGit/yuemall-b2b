@@ -1,5 +1,5 @@
 <template>
-	<div class="link-container">
+	<div class="min-container">
 		<h1 class="title">商家与悦视觉旅拍合作流程</h1>
 		<section class="content">
 			<article class="step">
