@@ -1,8 +1,8 @@
 <template>
 	<div class="min-container">
-		<h1 class="title">商家与悦视觉旅拍合作流程</h1>
-		<section class="content">
-			<article class="step">
+		<article>
+			<h1 class="text-center">商家与悦视觉旅拍合作流程</h1>
+			<section>
 				<h3>Step1 加盟</h3>
 				<ol>
 				  <li>企业提交联系方式</li>
@@ -10,8 +10,8 @@
 				  <li>加盟成功</li>
 				  <li>悦视觉提供登陆账户</li>
 				</ol>
-			</article>
-			<article class="step">
+			</section>
+			<section>
 				<h3>Step2 预定产品</h3>
 				<ol>
 				  <li>登录</li>
@@ -23,8 +23,8 @@
 				  <li>补充客户详细信息</li>
 				  <li>悦视觉最终确认服务内容及档期/团期</li>
 				</ol>
-			</article>
-			<article class="step">
+			</section>
+			<section>
 				<h3>Step3 悦视觉服务</h3>
 				<ol>
 				  <li>悦视觉客服按照出行时间，提前联系客户，确认服务内容及告知注意事项</li>
@@ -34,8 +34,8 @@
 				  <li>QQ回传照片（包含相应张数的简修照片）</li>
 				  <li>结束悦视觉服务流程</li>
 				</ol>
-			</article>
-			<article class="step">
+			</section>
+			<section>
 				<h3>Step4</h3>
 				<ol>
 				  <li>商家预约客户进店选片</li>
@@ -43,7 +43,12 @@
 				  <li>客户取件</li>
 				  <li>完成服务</li>
 				</ol>
-			</article>
-		</section>
+			</section>
+		</article>
 	</div>
 </template>
+<style scoped>
+	section {
+	 margin-bottom: 15px;
+	}
+</style>

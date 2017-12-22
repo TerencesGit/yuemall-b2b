@@ -4,15 +4,18 @@ import ShowContainer from '@/components/ShowContainer'
 import Login from '@/pages/login'
 import ShowIndex from '@/pages/show'
 import ShowDetail from '@/pages/showDetail'
-import IssueProtocol from '@/pages/issue/site_protocol'
-import IssueProcess from '@/pages/issue/process'
-import IssuePayment from '@/pages/issue/payment'
-import IssueJoin from '@/pages/issue/join'
-import IssuePhotoTerm from '@/pages/issue/photo_term'
-import IssueTourismTerm from '@/pages/issue/tourism_term'
-import IssueContact from '@/pages/issue/contact'
-import IssueInstructions from '@/pages/issue/instructions'
-import IssueComplain from '@/pages/issue/customer_complain'
+
+import SiteProtocol from '@/pages/guide/site_protocol'
+import ReservationProcess from '@/pages/guide/process'
+import PaymentInvoice from '@/pages/guide/payment'
+
+import JoinUs from '@/pages/about/join'
+import ContactUs from '@/pages/about/contact'
+
+import PhotoTerm from '@/pages/help/photo_term'
+import TourismTerm from '@/pages/help/tourism_term'
+import Instructions from '@/pages/help/instructions'
+import CustomerComplain from '@/pages/help/customer_complain'
 
 const routes = [
 	{
@@ -42,20 +45,34 @@ const routes = [
 	  ]
 	},
 	{
-		path: '/issue',
-		name: 'Issue页',
+		path: '/guide',
+		name: '会员指南',
 		component: Container,
 	  children: [
-	  	{ path: 'protocol', name: '网站协议', component: IssueProtocol, },
-	  	{ path: 'process', name: '预定流程', component: IssueProcess, },
-	  	{ path: 'payment', name: '付款及发票', component: IssuePayment, },
-	  	{ path: 'join', name: '加盟我们', component: IssueJoin, },
-	  	{ path: 'photo_term', name: '旅拍术语', component: IssuePhotoTerm, },
-	  	{ path: 'tourism_term', name: '旅游术语', component: IssueTourismTerm, },
-	  	{ path: 'contact', name: '联系我们', component: IssueContact, },
-	  	{ path: 'instructions', name: '预定须知', component: IssueInstructions, },
-	  	{ path: 'complain', name: '预防客怨', component: IssueComplain, },
+	  	{ path: 'site_protocol', name: '网站协议', component: SiteProtocol, },
+	  	{ path: 'reservation_process', name: '预定流程', component: ReservationProcess, },
+	  	{ path: 'payment_invoice', name: '付款及发票', component: PaymentInvoice, },
 	  ]
+	},
+	{
+		path: '/about',
+		name: '如何合作',
+		component: Container,
+		children: [
+			{ path: 'join_us', name: '加盟我们', component: JoinUs, },
+	  	{ path: 'contact_us', name: '联系我们', component: ContactUs, },
+		]
+	},
+	{
+		path: '/help',
+		name: '帮助中心',
+		component: Container,
+		children: [
+			{ path: 'photo_term', name: '旅拍术语', component: PhotoTerm, },
+	  	{ path: 'tourism_term', name: '旅游术语', component: TourismTerm, },
+	  	{ path: 'instructions', name: '预定须知', component: Instructions, },
+	  	{ path: 'prevention_complain', name: '预防客怨', component: CustomerComplain, },
+		]
 	},
 	{
 		path: '*',
