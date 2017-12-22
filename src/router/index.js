@@ -41,7 +41,6 @@ const routes = [
 		component: ShowContainer,
 	  children: [
 	  	{ path: 'detail', name: '客片详情页', component: ShowDetail, },
-	  	
 	  ]
 	},
 	{

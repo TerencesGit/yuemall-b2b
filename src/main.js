@@ -13,7 +13,15 @@ Vue.use(Router)
 Vue.use(ElementUI)
 Mock.bootstrap()
 const router = new Router({
-	routes
+	routes,
+	mode: 'history',
+	scrollBehavior (to, from, savedPosition) {
+	  if (savedPosition) {
+	    return savedPosition
+	  } else {
+	    return { x: 0, y: 0 }
+	  }
+	}
 })
 /* eslint-disable no-new */
 new Vue({
