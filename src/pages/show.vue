@@ -245,6 +245,9 @@
 				width: 200px;
 				margin: auto;
 			}
+			h4 {
+				font-weight: normal;
+			}
 			&::before, &::after {
 				content: '';
 				position: absolute;

@@ -2,6 +2,7 @@ import Container from '@/components/Container'
 import ShowContainer from '@/components/ShowContainer'
 
 import Login from '@/pages/login'
+import Index from '@/pages/index'
 import ShowIndex from '@/pages/show'
 import ShowDetail from '@/pages/showDetail'
 
@@ -32,7 +33,8 @@ const routes = [
 	  name: '悦视觉',
 	  component: Container,
 	  children: [
-	  	{ path: 'show', name: '首页', component: ShowIndex,}
+	  	{ path: 'index', name: '首页', component: Index,},
+	  	{ path: 'show', name: '客片展示页', component: ShowIndex,}
 	  ]
 	},
 	{

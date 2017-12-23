@@ -3,7 +3,7 @@
 		<div class="banner" v-loading="loading">
 			<el-carousel indicator-position height="600px">
 		    <el-carousel-item v-for="(item, index) in bannerList" :key="index">
-		      <router-link to="/" :style="{background: url('+item.imgUrl+')}">
+		      <router-link to="/" :style="{background: 'url('+item.imgUrl+') center center no-repeat'}">
 		      	<!-- <img :src="item.imgUrl" :alt="item.wareName"> -->
 		      </router-link>
 		    </el-carousel-item>
@@ -11,6 +11,25 @@
 		</div>
 		<div class="main">
 			<div class="container">
+				<div class="recommend-row">	
+					<div class="more">
+						<router-link to="/">更多推荐>></router-link>
+					</div>
+					<div class="recommend-wrap">
+						<ul ref="recommend" class="recommend-list clearfix" v-bind:style="{ width: recomendSlideNum * 100 +'%'}">
+							<li v-for="item in recommendList">
+								<router-link to="/">
+									<img :src="item.imgUrl">
+									<p class="item-name ellipsis">{{item.name}}</p>
+								</router-link>
+							</li>
+						</ul>
+					</div>
+					<div class="switch-button">
+						<i class="icon prev" @click="imageSlide(-1)"></i>
+						<i class="icon next" @click="imageSlide(+1)"></i>
+					</div>
+				</div>
 				<div class="destination">
 					<div class="title">
 						<h2>全球100+旅拍目的地</h2>
@@ -20,17 +39,17 @@
 					<div class="des-rows">
 						<ul class="des-row">
 							<li v-for="des in desRow1" :index="des.id">
-								<router-link :to="des.url" target="_blank">{{des.name}}</router-link>
+								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
 							<li v-for="des in desRow2" :index="des.id">
-								<router-link :to="des.url" target="_blank">{{des.name}}</router-link>
+								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
 							<li v-for="des in desRow3" :index="des.id">
-								<router-link :to="des.url" target="_blank">{{des.name}}</router-link>
+								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
 					</div>
@@ -42,9 +61,8 @@
 					<div class="recommend-list">
 						<ul class="show-list clearfix">
 							<li class="show-item" v-for="item in recommendList" :index="item.id">
-								<router-link :to="item.url" target="_blank">
+								<router-link :to='"show/detail?destination="+item.url' target="_blank">
 									<img :src="item.imgUrl" class="responsive-img">
-									<!-- <i class="icon iocn-tag native"></i> -->
 									<p class="item-name">
 										{{item.name}} 
 										<span class="uppercase">{{item.englishName}}</span>
@@ -63,19 +81,19 @@
 					<div class="des-rows">
 						<ul class="des-row">
 							<li v-for="des in nativeDesRow1" :index="des.id">
-								<router-link :to="des.url" target="_blank">{{des.name}}</router-link>
+								<router-link :to='des.url'>{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
 							<li v-for="des in nativeDesRow2" :index="des.id">
-								<router-link :to="des.url" target="_blank">{{des.name}}</router-link>
+								<router-link :to='des.url'>{{des.name}}</router-link>
 							</li>
 						</ul>
 					</div>
 					<div class="native-show">
 						<ul class="show-list clearfix">
 							<li class="show-item" v-for="item in nativeShow" :index="item.id">
-								<router-link :to="item.url" target="_blank">
+								<router-link :to="item.url">
 									<img :src="item.imgUrl" class="responsive-img">
 									<!-- <i class="icon iocn-tag native"></i> -->
 									<p class="item-name">
@@ -96,21 +114,20 @@
 					<div class="des-rows">
 						<ul class="des-row">
 							<li v-for="des in overseaDesRow1" :index="des.id">
-								<router-link :to="des.url" target="_blank">{{des.name}}</router-link>
+								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
 							<li v-for="des in overseaDesRow2" :index="des.id">
-								<router-link :to="des.url" target="_blank">{{des.name}}</router-link>
+								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
 					</div>
 					<div class="recommend-list">
 						<ul class="show-list clearfix">
 							<li class="show-item" v-for="item in overseaShow" :index="item.id">
-								<router-link :to="item.url" target="_blank">
+								<router-link :to='item.url !== "/" ? "show/detail?destination="+item.url : "/"' :target="item.url === '/' ? '' : '_blank'">
 									<img :src="item.imgUrl" class="responsive-img">
-									<!-- <i class="icon iocn-tag native"></i> -->
 									<p class="item-name">
 										{{item.name}} 
 										<span class="uppercase">{{item.englishName}}</span>
@@ -125,13 +142,14 @@
 	</section>
 </template>
 <script>
-	import { getIndexBanner, getDestinations, getShowImgList } from '@/api'
+	import { getIndexBanner, getDestinations } from '@/api'
 	export default {
 		data() {
 			return {
 				loading: false,
 				bannerList: [],
 				destinations: [],
+				imgSlideNum: 0,
 			}
 		},
 		methods: {
@@ -155,8 +173,16 @@
 					this.destinations.sort(() => {
       			return 0.5 - Math.random()
       		})
-					console.log(this.destinations)
 				})
+			},
+			imageSlide(val) {
+				this.imgSlideNum += val;
+				if(this.imgSlideNum <= 0) {
+					this.imgSlideNum = 0
+				} else if(this.imgSlideNum >= (this.recomendSlideNum - 1)) {
+					this.imgSlideNum = this.recomendSlideNum - 1
+				}
+				this.$refs.recommend.style.left = -(this.imgSlideNum * 100)+ '%';
 			},
 		},
 		computed: {
@@ -173,10 +199,10 @@
 				return this.destinations.filter(des => des.region === 'native')
 			},
 			nativeDesRow1(){
-				return this.nativeList.filter((des, index) => index >= 0 && index < 7 )
+				return this.nativeList.filter((des, index) => index >= 0 && index < 6 )
 			},
 			nativeDesRow2(){
-				return this.nativeList.filter((des, index) => index >= 7 && index < 11 )
+				return this.nativeList.filter((des, index) => index >= 6 && index < 15 )
 			},
 			nativeShow(){
 				return this.nativeList.filter(des => des.imgUrl)
@@ -188,13 +214,16 @@
 				return this.destinations.filter(des => des.region === 'oversea')
 			},
 			overseaDesRow1(){
-				return this.overseaList.filter((des, index) => index >= 0 && index < 9 )
+				return this.overseaList.filter((des, index) => index >= 0 && index < 7 )
 			},
 			overseaDesRow2(){
-				return this.overseaList.filter((des, index) => index >= 9 && index < 15 )
+				return this.overseaList.filter((des, index) => index >= 7 && index < 13 )
 			},
 			overseaShow() {
-				return this.overseaList.filter((des, index) => des.imgUrl)
+				return this.overseaList.filter((des, index) => des.imgUrl && des.recommend)
+			},
+			recomendSlideNum() {
+				return Math.ceil(this.recommendList.length / 3);
 			}
 		},
 		mounted() {
@@ -240,7 +269,7 @@
 			width: 50px;
 			height: 2px;
 			margin: 8px auto;
-			background: #c60c1a;
+			background: #00AAEF;
 		}
 		&.has-line {
 			h2, h4 {
@@ -261,6 +290,84 @@
 			}
 			&::after {
 				right: 0;
+			}
+		}
+	}
+	.recommend-row {
+		position: relative;
+		.more {
+			margin: 12px 0;
+			text-align: right;
+			a {
+				color: #e50110;
+			}
+		}
+		.switch-button {
+			position: absolute;
+			top: 40%;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			.icon {
+				position: absolute;
+				top: 40%;
+		    width: 32px;
+		    height: 57px;
+		    cursor: pointer;
+				&.prev {
+					left: -50px;
+					background-position: -138px -59px;
+				}
+				&.next {
+					right: -50px;
+					background-position: -106px -59px;
+				}
+			}
+		}
+		.recommend-wrap {
+			position: relative;
+			overflow: hidden;
+			width: 100%;
+			height: 221px;
+		}
+		.recommend-list {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 221px;
+			transition: all .8s;
+			li {
+				float: left;
+				width: 394px;
+				margin-right: 9px;
+				overflow: hidden;
+				cursor: pointer;
+				position: relative;
+				&:nth-child(3n) {
+					margin-right: 0;
+				}
+				&:hover {
+					.item-name {
+						bottom: 0;
+						background: #e50110;
+					}
+				}
+				img {
+					display: block;
+					width: 100%;
+					height: auto;
+				}
+				.item-name {
+					position: absolute;
+					bottom: -45px;
+					width: 100%;
+					padding: 10px 12px;
+					text-align: left;
+					font-size: 16px;
+					color: #fff;
+					background: transparent;
+					transition: all .3s;
+				}
 			}
 		}
 	}
@@ -334,8 +441,8 @@
 				font-weight: normal;
 				border: 1px solid #ccc;
 				&:hover {
-					background: #e50110;
-					border: 1px solid #e50110;
+					background: #00AAEF;
+					border: 1px solid #00AAEF;
 				}
 			}
 		}
@@ -356,7 +463,7 @@
 				box-shadow: 0 15px 30px rgba(255,255,255,.1);
 				transform: translate3d(0, -2px, 0);
 				.item-name {
-					background: #c60c1a;
+					background: #00AAEF;
 				}
 			}
 			img {
