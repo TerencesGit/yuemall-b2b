@@ -223,7 +223,7 @@
 				return this.overseaList.filter((des, index) => des.imgUrl && des.recommend)
 			},
 			recomendSlideNum() {
-				return Math.ceil(this.recommendList.length / 3);
+				return Math.ceil(this.recommendList.length / 4);
 			}
 		},
 		mounted() {
@@ -304,16 +304,16 @@
 		}
 		.switch-button {
 			position: absolute;
-			top: 40%;
+			top: 35%;
 			left: 0;
 			width: 100%;
 			height: 1px;
 			.icon {
 				position: absolute;
 				top: 40%;
-		    width: 32px;
-		    height: 57px;
-		    cursor: pointer;
+			    width: 32px;
+			    height: 57px;
+			    cursor: pointer;
 				&.prev {
 					left: -50px;
 					background-position: -138px -59px;
@@ -338,18 +338,18 @@
 			transition: all .8s;
 			li {
 				float: left;
-				width: 394px;
-				margin-right: 9px;
+				width: 292px;
+				margin-right: 8px;
 				overflow: hidden;
 				cursor: pointer;
 				position: relative;
-				&:nth-child(3n) {
-					margin-right: 0;
+				&:nth-child(4n) {
+					/*margin-right: 0;*/
 				}
 				&:hover {
 					.item-name {
 						bottom: 0;
-						background: #e50110;
+						background: rgba(0,0,0,.8);
 					}
 				}
 				img {
@@ -374,7 +374,7 @@
 	.destination {
 		margin: 15px 0;
 		padding: 15px 0;
-  	text-align: center;
+  		text-align: center;
 	}
 	div[class$="-section"] {
 		margin: 30px 0;
