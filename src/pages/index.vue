@@ -15,9 +15,9 @@
 					<div class="more">
 						<router-link to="/">更多推荐>></router-link>
 					</div>
-					<div class="recommend-wrap">
+					<div ref="recommendWrap" class="recommend-wrap">
 						<ul ref="recommend" class="recommend-list clearfix" v-bind:style="{ width: recomendSlideNum * 100 +'%'}">
-							<li v-for="item in recommendList">
+							<li v-for="item in recommendList" v-bind:style="{ width: slideItemWidth, marginRight: gutter + 'px'}">
 								<router-link to="/">
 									<img :src="item.imgUrl">
 									<p class="item-name ellipsis">{{item.name}}</p>
@@ -150,6 +150,8 @@
 				bannerList: [],
 				destinations: [],
 				imgSlideNum: 0,
+				gutter: 8,
+				span: 4,
 			}
 		},
 		methods: {
@@ -176,13 +178,15 @@
 				})
 			},
 			imageSlide(val) {
+				console.log(val)
 				this.imgSlideNum += val;
 				if(this.imgSlideNum <= 0) {
-					this.imgSlideNum = 0
-				} else if(this.imgSlideNum >= (this.recomendSlideNum - 1)) {
-					this.imgSlideNum = this.recomendSlideNum - 1
+					this.imgSlideNum = 0;
+				} else if(this.imgSlideNum >= (this.recommendList.length - 1)) {
+					this.imgSlideNum = this.recommendList.length - 1;
 				}
-				this.$refs.recommend.style.left = -(this.imgSlideNum * 100)+ '%';
+				this.$refs.recommend.style.left = -(302 * this.imgSlideNum ) + 'px';
+				// -(this.imgSlideNum * 100)+ '%';
 			},
 		},
 		computed: {
@@ -224,7 +228,11 @@
 			},
 			recomendSlideNum() {
 				return Math.ceil(this.recommendList.length / 4);
-			}
+			},
+			slideItemWidth() {
+				console.log((this.$refs.recommendWrap.offsetWidth - this.gutter * this.span) / this.span);
+				return (this.$refs.recommendWrap.offsetWidth - this.gutter * this.span) / this.span + 'px';
+			},
 		},
 		mounted() {
 			this.getBanners()
@@ -262,6 +270,7 @@
 			letter-spacing: 2px;
 		}
 		h4 {
+			font-weight: normal;
 			font-size: 12px;
 		}
 		.line {
@@ -338,8 +347,8 @@
 			transition: all .8s;
 			li {
 				float: left;
-				width: 292px;
-				margin-right: 8px;
+				// width: 292px;
+				// margin-right: 8px;
 				overflow: hidden;
 				cursor: pointer;
 				position: relative;
