@@ -1,14 +1,13 @@
 <template>
 	<section>
-		<div class="banner" v-loading="loading">
+		<!-- <div class="banner" v-loading="loading">
 			<el-carousel indicator-position height="600px">
 		    <el-carousel-item v-for="(item, index) in bannerList" :key="index">
 		      <router-link to="/" :style="{background: 'url('+item.imgUrl+') center center no-repeat'}">
-		      	<!-- <img :src="item.imgUrl" :alt="item.wareName"> -->
 		      </router-link>
 		    </el-carousel-item>
 		  </el-carousel>
-		</div>
+		</div> -->
 		<div class="main">
 			<div class="container">
 				<div class="destination">
@@ -218,8 +217,8 @@
 		}
 	}
   .main {
-  	color: #fff;
-  	background: #212121;
+  	color: #333;
+  	background: #F4F3EE;
   }
   .title {
 		padding: 30px;
@@ -254,7 +253,7 @@
 				top: 68px;
 				width: calc(50% - 150px);
 				height: 1px;
-				background: #ccc;
+				background: #999;
 			}
 			&::before {
 				left: 0;
@@ -285,9 +284,10 @@
 				line-height: 30px;
 				margin-left: 9px;
 				text-align: center;
-				color: #666;
+				color: #444;
 				background: #F5F4EF;
 				border-radius: 5px;
+				border: 1px solid #555;
 				position: relative;
 				&::before {
 					content: '';
@@ -301,6 +301,7 @@
 				&:hover {
 					color: #fff;
 					background: #009FE9;
+					border: none;
 					&::before {
 						background: url(../assets/img/coordinate_hover.png) no-repeat center;
 					}
@@ -319,7 +320,7 @@
 				top: 18px;
 				width: calc(50% - 65px);
 				height: 1px;
-				background: #ccc;
+				background: #999;
 			}
 			&::before {
 				left: 0;
@@ -332,8 +333,9 @@
 				width: 130px;
 				padding: 5px 30px;
 				font-weight: normal;
-				border: 1px solid #ccc;
+				border: 1px solid #999;
 				&:hover {
+					color: #fff;
 					background: #00AAEF;
 					border: 1px solid #00AAEF;
 				}
@@ -356,6 +358,7 @@
 				box-shadow: 0 15px 30px rgba(255,255,255,.1);
 				transform: translate3d(0, -2px, 0);
 				.item-name {
+					color: #fff;
 					background: #00AAEF;
 				}
 			}
@@ -381,7 +384,7 @@
 			.item-name {
 				padding: 10px 15px;
 				text-align: center;
-				color: #fff;
+				color: #333;
 				font-size: 16px;
 				// background: #414141;
 				transition: all .3s;
