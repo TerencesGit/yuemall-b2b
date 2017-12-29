@@ -1,7 +1,7 @@
 <template>
 	<div class="min-container">
 		<article>
-			<h1 class="text-center">商家与悦视觉旅拍合作流程</h1>
+			<h2 class="text-center">商家与悦视觉旅拍合作流程</h2>
 			<section>
 				<h3>Step1 加盟</h3>
 				<ol>
@@ -30,13 +30,13 @@
 				  <li>悦视觉客服按照出行时间，提前联系客户，确认服务内容及告知注意事项</li>
 				  <li>客人出发</li>
 				  <li>依据订单内容为客户进行拍摄/旅游/婚礼服务</li>
-				  <li>依据回片时间（国内5-7个工作日、国外15-20个工作日）</li>
+				  <li>等待回片（国内5-7个工作日、国外15-20个工作日）</li>
 				  <li>QQ回传照片（包含相应张数的简修照片）</li>
 				  <li>结束悦视觉服务流程</li>
 				</ol>
 			</section>
 			<section>
-				<h3>Step4</h3>
+				<h3>Step4 商家后续服务</h3>
 				<ol>
 				  <li>商家预约客户进店选片</li>
 				  <li>商家制作产品</li>

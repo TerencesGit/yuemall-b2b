@@ -142,7 +142,7 @@
 	</section>
 </template>
 <script>
-	import { getIndexBanner, getDestinations } from '@/api'
+	import { getIndexBanner, getDestinations, findWareTripInfo } from '@/api'
 	export default {
 		data() {
 			return {
@@ -170,6 +170,13 @@
 				})
 			},
 			getDes() {
+				// console.log(1234)
+				let data = {};
+				// findWareTripInfo(data).then(res => {
+				// 	console.log(res)
+				// }).catch(err => {
+				// 	console.log(err)
+				// })
 				getDestinations().then(res => {
 					this.destinations = res.data.result.destinations;
 					this.destinations.sort(() => {

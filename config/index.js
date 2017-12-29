@@ -10,7 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      // '/baseInter': {
+      //   target: 'http://b2b.yueshijue.com/lvpai',
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '^/baseInter': ''
+      //   }
+      // },
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

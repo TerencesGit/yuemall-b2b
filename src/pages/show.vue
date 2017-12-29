@@ -157,13 +157,14 @@
 		},
 		computed: {
 			desRow1() {
-				return this.destinations.filter((des, index) => index >= 0 && index < 10 )
+				// return this.destinations.filter((des, index) => index >= 0 && index < 10 )
+				return this.nativeList.filter((des, index) => index >= 0 && index < 8 )
 			},
 			desRow2() {
-				return this.destinations.filter((des, index) => index >= 10 && index < 19 )
+				return this.overseaList.filter((des, index) => index >= 0 && index < 7 )
 			},
 			desRow3() {
-				return this.destinations.filter((des, index) => index >= 19 && index < 27 )
+				return this.overseaList.filter((des, index) => index >= 7 && index < 13 )
 			},
 			nativeList(){
 				return this.destinations.filter(des => des.region === 'native')

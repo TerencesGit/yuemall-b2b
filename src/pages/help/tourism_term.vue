@@ -1,5 +1,6 @@
 <template>
 	<div class="min-container">
+		<h2 class="text-center">旅游术语</h2>
 		<ul>
 			<li>
 				<h3>什么是标准间？</h3>

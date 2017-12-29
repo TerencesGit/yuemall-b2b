@@ -9,7 +9,7 @@
 					<dt><strong>中信</strong></dt>
 					<dd>户名：郑毅</dd>
 					<dd>账号：<strong>6226 9007 1036 3983</strong></dd>
-					<dd>银行：中信银行广渠路之支行</dd>
+					<dd>银行：中信银行广渠路支行</dd>
 				</dl>
 				<dl>
 					<dt><strong>工行</strong></dt>
