@@ -33,7 +33,7 @@ const routes = [
 	  name: '悦视觉',
 	  component: Container,
 	  children: [
-	  	// { path: 'index', name: '首页', component: Index,},
+	  	{ path: 'index', name: '首页', component: Index,},
 	  	{ path: 'show', name: '客片展示页', component: ShowIndex,}
 	  ]
 	},

@@ -3,22 +3,14 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-
+var proxyTable = require('http-proxy-middleware');
 module.exports = {
   dev: {
 
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      // '/baseInter': {
-      //   target: 'http://b2b.yueshijue.com/lvpai',
-      //   changeOrigin: true,
-      //   pathRewrite: {
-      //     '^/baseInter': ''
-      //   }
-      // },
-    },
+    proxyTable: {},
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
