@@ -18,17 +18,17 @@
 					</div>
 					<div class="des-rows">
 						<ul class="des-row">
-							<li v-for="des in desRow1" :index="des.id">
+							<li v-for="des in desRow1" :key="des.id">
 								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
-							<li v-for="des in desRow2" :index="des.id">
+							<li v-for="des in desRow2" :key="des.id">
 								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
-							<li v-for="des in desRow3" :index="des.id">
+							<li v-for="des in desRow3" :key="des.id">
 								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
@@ -40,7 +40,7 @@
 					</div>
 					<div class="recommend-list">
 						<ul class="show-list clearfix">
-							<li class="show-item" v-for="item in recommendList" :index="item.id">
+							<li class="show-item" v-for="item in recommendList" :key="item.id">
 								<router-link :to='"show/detail?destination="+item.url' target="_blank">
 									<img :src="item.imgUrl" class="responsive-img">
 									<p class="item-name">
@@ -60,25 +60,25 @@
 					</div>
 					<div class="des-rows">
 						<ul class="des-row">
-							<li v-for="des in nativeDesRow1" :index="des.id">
-								<router-link :to='des.url'>{{des.name}}</router-link>
+							<li v-for="des in nativeDesRow1" :key="des.id">
+								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
-							<li v-for="des in nativeDesRow2" :index="des.id">
-								<router-link :to='des.url'>{{des.name}}</router-link>
+							<li v-for="des in nativeDesRow2" :key="des.id">
+								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
 					</div>
 					<div class="native-show">
 						<ul class="show-list clearfix">
-							<li class="show-item" v-for="item in nativeShow" :index="item.id">
-								<router-link :to="item.url">
-									<img :src="item.imgUrl" class="responsive-img">
+							<li class="show-item" v-for="(des, index) in nativeShow" :key="index">
+								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">
+									<img :src="des.imgUrl" class="responsive-img">
 									<!-- <i class="icon iocn-tag native"></i> -->
 									<p class="item-name">
-										{{item.name}} 
-										<span class="uppercase">{{item.englishName}}</span>
+										{{des.name}} 
+										<span class="uppercase">{{des.englishName}}</span>
 									</p>
 								</router-link>
 							</li>
@@ -93,19 +93,19 @@
 					</div>
 					<div class="des-rows">
 						<ul class="des-row">
-							<li v-for="des in overseaDesRow1" :index="des.id">
+							<li v-for="des in overseaDesRow1" :key="des.id">
 								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
 						<ul class="des-row">
-							<li v-for="des in overseaDesRow2" :index="des.id">
+							<li v-for="des in overseaDesRow2" :key="des.id">
 								<router-link :to='des.url !== "/" ? "show/detail?destination="+des.url : "/"' :target="des.url === '/' ? '' : '_blank'">{{des.name}}</router-link>
 							</li>
 						</ul>
 					</div>
 					<div class="recommend-list">
 						<ul class="show-list clearfix">
-							<li class="show-item" v-for="item in overseaShow" :index="item.id">
+							<li class="show-item" v-for="item in overseaShow" :key="item.id">
 								<router-link :to='item.url !== "/" ? "show/detail?destination="+item.url : "/"' :target="item.url === '/' ? '' : '_blank'">
 									<img :src="item.imgUrl" class="responsive-img">
 									<p class="item-name">
@@ -122,7 +122,8 @@
 	</section>
 </template>
 <script>
-	import { getIndexBanner, getDestinations } from '@/api'
+	// import { getIndexBanner, getDestinations } from '@/api'
+	import { DstShowList } from '@/data/index.js'
 	export default {
 		data() {
 			return {
@@ -132,28 +133,6 @@
 			}
 		},
 		methods: {
-			getBanners() {
-				this.loading = true;
-				getIndexBanner().then(res => {
-					this.loading = false;
-					if(res.data.code === '0001') {
-						this.bannerList = res.data.result.bannerList;
-					} else {
-						this.$message.error(res.data.message)
-					}
-				}).catch(err => {
-					console.log(err)
-					this.loading = false;
-				})
-			},
-			getDes() {
-				getDestinations().then(res => {
-					this.destinations = res.data.result.destinations;
-					this.destinations.sort(() => {
-      			return 0.5 - Math.random()
-      		})
-				})
-			},
 		},
 		computed: {
 			desRow1() {
@@ -170,10 +149,10 @@
 				return this.destinations.filter(des => des.region === 'native')
 			},
 			nativeDesRow1(){
-				return this.nativeList.filter((des, index) => index >= 0 && index < 6 )
+				return this.nativeList.filter((des, index) => index >= 0 && index < 7 )
 			},
 			nativeDesRow2(){
-				return this.nativeList.filter((des, index) => index >= 6 && index < 15 )
+				return this.nativeList.filter((des, index) => index >= 7 && index < 15 )
 			},
 			nativeShow(){
 				return this.nativeList.filter(des => des.imgUrl)
@@ -194,9 +173,8 @@
 				return this.overseaList.filter((des, index) => des.imgUrl && des.recommend)
 			}
 		},
-		mounted() {
-			this.getBanners()
-			this.getDes()
+		created() {
+			this.destinations = DstShowList;
 		}
 	}
 </script>
@@ -297,14 +275,14 @@
 					left: 9px;
 					width: 10px;
 					height: 12px;
-					background: url(../assets/img/coordinate.png) no-repeat center;
+					background: url(/static/img/coordinate.png) no-repeat center;
 				}
 				&:hover {
 					color: #fff;
 					background: #009FE9;
 					border: none;
 					&::before {
-						background: url(../assets/img/coordinate_hover.png) no-repeat center;
+						background: url(/static/img/coordinate_hover.png) no-repeat center;
 					}
 				}
 			}

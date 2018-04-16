@@ -1,10 +1,10 @@
 import Container from '@/components/Container'
 import ShowContainer from '@/components/ShowContainer'
 
-import Login from '@/pages/login'
-import Index from '@/pages/index'
-import ShowIndex from '@/pages/show'
-import ShowDetail from '@/pages/showDetail'
+// import Index from '@/pages/index'
+
+import ShowIndex from '@/pages/show/index'
+import ShowDetail from '@/pages/show/detail'
 
 import SiteProtocol from '@/pages/guide/site_protocol'
 import ReservationProcess from '@/pages/guide/process'
@@ -24,16 +24,11 @@ const routes = [
 	  redirect: '/show'
 	},
 	{
-	  path: '/login',
-	  name: '登录页',
-	  component: Login,
-	},
-	{
 	  path: '/',
 	  name: '悦视觉',
 	  component: Container,
 	  children: [
-	  	{ path: 'index', name: '首页', component: Index,},
+	  	// { path: 'index', name: '首页', component: Index,},
 	  	{ path: 'show', name: '客片展示页', component: ShowIndex,}
 	  ]
 	},
